@@ -2,10 +2,16 @@ package med.voll.api.dataprovider.entities;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import med.voll.api.core.entities.Endereco;
+import med.voll.api.core.entities.medico.Especialidade;
 import med.voll.api.core.entities.medico.Medico;
 
 @Entity(name = "Medico")
 @Table(name = "medico")
+@Getter
+@NoArgsConstructor
 public class MedicoEntity {
 
     @Id
@@ -15,20 +21,23 @@ public class MedicoEntity {
     private String email;
     private  String CRM;
 
-    @ManyToOne
-    private EspecialidadeEntity especialidade;
+    @Enumerated
+    private Especialidade especialidade;
 
-    @OneToOne
-    private EnderecoEntity endereco;
+    @Embedded
+    private Endereco endereco;
+
+
+
 
     public MedicoEntity( String nome, String email, String CRM,
-                        EspecialidadeEntity especialidade, EnderecoEntity endereco) {
+                        Especialidade especialidade, Endereco endereco) {
 
         this.nome = nome;
         this.email = email;
         this.CRM = CRM;
-        //this.especialidade = especialidade;
-        //this.endereco = endereco;
+        this.especialidade = especialidade;
+        this.endereco = endereco;
     }
 
     public MedicoEntity(Medico medico) {
@@ -36,11 +45,9 @@ public class MedicoEntity {
         this.nome = medico.getNome();
         this.email = medico.getEmail().getEndereco();
         this.CRM = medico.getCRM();
-        //this.especialidade = new EspecialidadeEntity(medico.getEspecialidade());
-        //this.endereco = new EnderecoEntity(medico.getEndereco());
+        this.especialidade = medico.getEspecialidade();
+        this.endereco = medico.getEndereco();
     }
 
-    public MedicoEntity() {
 
-    }
 }

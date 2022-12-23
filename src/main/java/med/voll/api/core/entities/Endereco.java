@@ -1,5 +1,15 @@
 package med.voll.api.core.entities;
 
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Embeddable
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
 public class Endereco {
 
     private  String logradouro;
