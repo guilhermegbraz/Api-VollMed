@@ -9,7 +9,7 @@ import med.voll.api.core.entities.medico.Especialidade;
 import med.voll.api.core.entities.medico.Medico;
 
 @Entity(name = "Medico")
-@Table(name = "medico")
+@Table(schema = "medico")
 @Getter
 @NoArgsConstructor
 public class MedicoEntity {
@@ -20,6 +20,7 @@ public class MedicoEntity {
     private String nome;
     private String email;
     private  String CRM;
+    private String telefone;
 
     @Enumerated
     private Especialidade especialidade;
@@ -30,12 +31,13 @@ public class MedicoEntity {
 
 
 
-    public MedicoEntity( String nome, String email, String CRM,
+    public MedicoEntity( String nome, String email, String CRM, String telefone,
                         Especialidade especialidade, Endereco endereco) {
 
         this.nome = nome;
         this.email = email;
         this.CRM = CRM;
+        this.telefone = telefone;
         this.especialidade = especialidade;
         this.endereco = endereco;
     }
@@ -47,6 +49,7 @@ public class MedicoEntity {
         this.CRM = medico.getCRM();
         this.especialidade = medico.getEspecialidade();
         this.endereco = medico.getEndereco();
+        this.telefone = medico.getTelefone();
     }
 
 
