@@ -7,7 +7,7 @@ API Rest do app de uma clinica médica (Voll Med)
 | -------------  | --- |
 | :sparkles: Nome        | **API Voll Med**
 | :label: Tecnologias | Spring Boot 3, Java, MySQL, JPA, Maven
-| :rocket: URL         | https://github.com/guilhermegbraz/Voll.Med-ApiRest
+| :rocket: URL         | https://github.com/guilhermegbraz/Api-VollMed
 | :fire: Desafio     |
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
