@@ -1,12 +1,19 @@
 package med.voll.api.dataprovider.medico;
 
 
+import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
 import med.voll.api.dataprovider.entities.MedicoEntity;
+import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.sql.SQLException;
+
 
 @Service
 public class JpaMedicoDAO implements MedicoRepository {
@@ -22,7 +29,13 @@ public class JpaMedicoDAO implements MedicoRepository {
     @Override
     public void cadastrar(Medico novoMedico) {
        MedicoEntity medico = new MedicoEntity(novoMedico);
-        repository.save(medico);
-        System.out.println("Salvei o medico no banco de dados");
+       try{repository.save(medico);
+       } catch (Exception e) {
+            throw new BusinessException(BusinessException.getFullMessage(e));
+       }
+   }
+
+    public Page<MedicoEntity> listarTodosMedicos(Pageable pageable) {
+        return this.repository.findAll(pageable);
     }
 }

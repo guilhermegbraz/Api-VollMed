@@ -2,6 +2,8 @@ package med.voll.api.dataprovider.medico;
 
 
 import med.voll.api.dataprovider.entities.MedicoEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
 
 
+    Page<MedicoEntity> findAll(Pageable pageable);
 }
