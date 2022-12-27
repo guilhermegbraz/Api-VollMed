@@ -5,14 +5,11 @@ import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
 import med.voll.api.dataprovider.entities.MedicoEntity;
-import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.sql.SQLException;
 
 
 @Service

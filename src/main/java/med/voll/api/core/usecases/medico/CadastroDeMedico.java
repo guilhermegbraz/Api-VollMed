@@ -1,6 +1,7 @@
 package med.voll.api.core.usecases.medico;
 
 
+import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
 import med.voll.api.core.usecases.validação.medico.ValidadorCadastroMedico;
@@ -23,9 +24,13 @@ public class CadastroDeMedico {
         this.validacoes = v;
     }
 
-    public void cadastrar(Medico novoMedico) {
-        this.validacoes.forEach(validacao -> validacao.validar(novoMedico));
-        this.repositorio.cadastrar(novoMedico);
+    public void cadastrar(Medico novoMedico) throws BusinessException {
+        try {
+            this.validacoes.forEach(validacao -> validacao.validar(novoMedico));
+            this.repositorio.cadastrar(novoMedico);
+        }catch (BusinessException exception) {
+            throw exception;
+        }
     }
 
 }
