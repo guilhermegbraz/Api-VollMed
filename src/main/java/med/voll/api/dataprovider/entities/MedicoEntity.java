@@ -2,15 +2,16 @@ package med.voll.api.dataprovider.entities;
 
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.core.entities.Endereco;
 import med.voll.api.core.entities.medico.Especialidade;
-import med.voll.api.core.entities.medico.Medico;
 
 @Entity(name = "Medico")
 @Table(schema = "medico")
 @Getter
+@EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 public class MedicoEntity {
 
@@ -28,12 +29,8 @@ public class MedicoEntity {
     @Embedded
     private Endereco endereco;
 
-
-
-
     public MedicoEntity( String nome, String email, String CRM, String telefone,
                         Especialidade especialidade, Endereco endereco) {
-
         this.nome = nome;
         this.email = email;
         this.CRM = CRM;
@@ -42,15 +39,28 @@ public class MedicoEntity {
         this.endereco = endereco;
     }
 
-    public MedicoEntity(Medico medico) {
-
-        this.nome = medico.getNome();
-        this.email = medico.getEmail().getEndereco();
-        this.CRM = medico.getCRM();
-        this.especialidade = medico.getEspecialidade();
-        this.endereco = medico.getEndereco();
-        this.telefone = medico.getTelefone();
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    @Override
+    public String toString() {
+        return "MedicoEntity{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", CRM='" + CRM + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", especialidade=" + especialidade +
+                ", endereco=" + endereco +
+                '}';
+    }
 }
