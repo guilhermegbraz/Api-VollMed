@@ -1,8 +1,10 @@
 package med.voll.api.controller;
 
-import med.voll.api.controller.model.dto.MedicoDTO;
+import med.voll.api.controller.model.dto.DtoAtualizaMedico;
+import med.voll.api.controller.model.dto.DtoCadastroMedico;
 import med.voll.api.controller.model.viewModel.DadosListagemMedico;
 import med.voll.api.core.entities.BusinessException;
+import med.voll.api.core.usecases.medico.AtualizarDadosMedico;
 import med.voll.api.core.usecases.medico.CadastroDeMedico;
 import med.voll.api.dataprovider.medico.JpaMedicoDAO;
 import org.apache.coyote.Request;
@@ -10,12 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpStatus;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
@@ -28,14 +27,17 @@ public class MedicoController {
     @Autowired
     CadastroDeMedico cadastrarMedico;
 
+    @Autowired
+    AtualizarDadosMedico atualizarDadosMedico;
+
     @PostMapping
     @Transactional
-    public ResponseEntity<String> Cadastrar(@RequestBody MedicoDTO jsonMedico, Request req) {
+    public ResponseEntity Cadastrar(@RequestBody DtoCadastroMedico jsonMedico, Request req) {
         try{
-            cadastrarMedico.cadastrar(jsonMedico.toMedico());
+            cadastrarMedico.executar(jsonMedico.toMedico());
         }catch (BusinessException exception){
-            throw  new ResponseStatusException(HttpStatus.BAD_REQUEST,
-                    exception.getLocalizedMessage(),exception );
+            System.out.println(exception.getMessage());
+            return ResponseEntity.ok(exception.getMessage());
         }
         return ResponseEntity.ok("Médico Cadastrado");
     }
@@ -47,7 +49,9 @@ public class MedicoController {
     }
 
     @PutMapping
-    public void atualizar() {
+    @Transactional
+    public void atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
 
+        this.atualizarDadosMedico.executar(dadosAtualizacao);
     }
 }

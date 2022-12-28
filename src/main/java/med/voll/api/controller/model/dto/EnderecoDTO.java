@@ -14,7 +14,7 @@ public record EnderecoDTO(String logradouro, String bairro, String CEP,
                 this.UF,
                 this.numero);
         endereco.setComplemento(this.complemento);
-        return endereco;
+        return endereco.getLogradouro() == null ? null : endereco;
 
     }
 }

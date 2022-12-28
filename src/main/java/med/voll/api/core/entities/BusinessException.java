@@ -1,6 +1,5 @@
 package med.voll.api.core.entities;
 
-import javax.print.DocFlavor;
 
 public class BusinessException extends RuntimeException {
 

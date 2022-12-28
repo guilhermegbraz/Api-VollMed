@@ -6,8 +6,8 @@ import med.voll.api.core.entities.Email;
 import med.voll.api.core.entities.medico.Especialidade;
 import med.voll.api.core.entities.medico.Medico;
 
-public record MedicoDTO(String nome, String email, String CRM,
-                        Especialidade especialidade, EnderecoDTO endereco, String telefone) {
+public record DtoCadastroMedico(String nome, String email, String CRM,
+                                Especialidade especialidade, EnderecoDTO endereco, String telefone) {
     public Medico toMedico() {
         try {
         return new

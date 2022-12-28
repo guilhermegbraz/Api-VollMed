@@ -24,7 +24,7 @@ public class CadastroDeMedico {
         this.validacoes = v;
     }
 
-    public void cadastrar(Medico novoMedico) throws BusinessException {
+    public void executar(Medico novoMedico) throws BusinessException {
         try {
             this.validacoes.forEach(validacao -> validacao.validar(novoMedico));
             this.repositorio.cadastrar(novoMedico);
