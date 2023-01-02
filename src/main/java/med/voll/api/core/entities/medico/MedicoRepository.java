@@ -7,4 +7,6 @@ public interface MedicoRepository {
     Medico recuperarUmMedico(Long id);
 
     void atualizar(Medico medicoAtualizado);
+
+    void deletar(Medico medico);
 }
