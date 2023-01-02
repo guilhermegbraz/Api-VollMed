@@ -22,6 +22,8 @@ public class MedicoEntity {
     private String email;
     private  String CRM;
     private String telefone;
+    @Column(name = "ativo")
+    private boolean flagAtivo;
 
     @Enumerated
     private Especialidade especialidade;
@@ -30,13 +32,14 @@ public class MedicoEntity {
     private Endereco endereco;
 
     public MedicoEntity( String nome, String email, String CRM, String telefone,
-                        Especialidade especialidade, Endereco endereco) {
+                        Especialidade especialidade, Endereco endereco, boolean flagAtivo) {
         this.nome = nome;
         this.email = email;
         this.CRM = CRM;
         this.telefone = telefone;
         this.especialidade = especialidade;
         this.endereco = endereco;
+        this.flagAtivo = flagAtivo;
     }
 
     public void setNome(String nome) {
@@ -62,5 +65,9 @@ public class MedicoEntity {
                 ", especialidade=" + especialidade +
                 ", endereco=" + endereco +
                 '}';
+    }
+
+    public Boolean getFlagAtivo() {
+        return this.flagAtivo;
     }
 }

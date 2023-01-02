@@ -16,6 +16,7 @@ public class Medico {
     private String telefone;
     private  Especialidade especialidade;
     private Endereco endereco;
+    private boolean ativo;
 
 
     public Medico(String nome, Email email, String CRM, String telefone, Especialidade especialidade, Endereco endereco) {
@@ -25,9 +26,10 @@ public class Medico {
         this.telefone = telefone;
         this.especialidade = especialidade;
         this.endereco = endereco;
+        this.ativo = true;
     }
 
-    public Medico(Long id, String nome, Email email, String CRM, String telefone, Especialidade especialidade, Endereco endereco) {
+    public Medico(Long id, String nome, Email email, String CRM, String telefone, Especialidade especialidade, Endereco endereco, Boolean ativo) {
         this.nome = nome;
         this.email = email;
         this.CRM = CRM;
@@ -35,6 +37,7 @@ public class Medico {
         this.especialidade = especialidade;
         this.endereco = endereco;
         this.id = id;
+        this.ativo = ativo;
     }
 
     public void setNome(String nome) {
@@ -48,5 +51,13 @@ public class Medico {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public boolean getAtivo() {
+        return this.ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
