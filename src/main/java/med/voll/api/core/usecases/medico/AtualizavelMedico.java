@@ -1,4 +1,4 @@
-package med.voll.api.core.entities.medico;
+package med.voll.api.core.usecases.medico;
 
 import med.voll.api.core.entities.Endereco;
 

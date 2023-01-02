@@ -1,6 +1,5 @@
 package med.voll.api.core.usecases.medico;
 
-import med.voll.api.core.entities.medico.AtualizavelMedico;
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

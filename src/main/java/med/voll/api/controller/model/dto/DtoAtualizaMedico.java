@@ -3,7 +3,7 @@ package med.voll.api.controller.model.dto;
 import lombok.Getter;
 import lombok.Setter;
 import med.voll.api.core.entities.Endereco;
-import med.voll.api.core.entities.medico.AtualizavelMedico;
+import med.voll.api.core.usecases.medico.AtualizavelMedico;
 
 @Getter
 @Setter
