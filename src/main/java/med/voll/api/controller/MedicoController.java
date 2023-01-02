@@ -6,6 +6,7 @@ import med.voll.api.controller.model.viewModel.DadosListagemMedico;
 import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.usecases.medico.AtualizarDadosMedico;
 import med.voll.api.core.usecases.medico.CadastroDeMedico;
+import med.voll.api.core.usecases.medico.DeletarMedico;
 import med.voll.api.dataprovider.medico.JpaMedicoDAO;
 import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class MedicoController {
     @Autowired
     AtualizarDadosMedico atualizarDadosMedico;
 
+    @Autowired
+    DeletarMedico deletarMedico;
+
     @PostMapping
     @Transactional
     public ResponseEntity Cadastrar(@RequestBody DtoCadastroMedico jsonMedico, Request req) {
@@ -51,7 +55,11 @@ public class MedicoController {
     @PutMapping
     @Transactional
     public void atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
-
         this.atualizarDadosMedico.executar(dadosAtualizacao);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        this.deletarMedico.executar(id);
     }
 }
