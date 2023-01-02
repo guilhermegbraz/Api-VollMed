@@ -10,6 +10,6 @@ public class MedicoEntityToMedicoConversor {
 
     public Medico executar(MedicoEntity medico) {
         return new Medico(medico.getId(), medico.getNome(), new Email(medico.getEmail()),
-                medico.getCRM(), medico.getTelefone(),medico.getEspecialidade(),medico.getEndereco());
+                medico.getCRM(), medico.getTelefone(),medico.getEspecialidade(),medico.getEndereco(), medico.getFlagAtivo());
     }
 }
