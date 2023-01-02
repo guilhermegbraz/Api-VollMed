@@ -23,5 +23,13 @@ public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Medico m SET m.nome = :nomeNovo, m.telefone = :telefoneNovo, m.endereco = :enderecoNovo WHERE m.id = :id")
-    void update(@Param("nomeNovo") String nome, @Param("telefoneNovo") String telefone, @Param("enderecoNovo") Endereco endereco, @Param("id") Long id);
+    void update(@Param("nomeNovo") String nome, @Param("telefoneNovo") String telefone,
+                @Param("enderecoNovo") Endereco endereco, @Param("id") Long id);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Medico m SET m.flagAtivo = false WHERE m.id = :id")
+    void logicalDeleteById( @Param("id") Long id);
+
+    Page<MedicoEntity> findAllByFlagAtivoTrue(Pageable pageable);
 }

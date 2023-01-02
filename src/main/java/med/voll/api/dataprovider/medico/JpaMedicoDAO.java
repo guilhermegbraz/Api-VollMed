@@ -46,12 +46,17 @@ public class JpaMedicoDAO implements MedicoRepository {
     }
 
     public Page<MedicoEntity> listarTodosMedicos(Pageable pageable) {
-        return this.repository.findAll(pageable);
+        return this.repository.findAllByFlagAtivoTrue(pageable);
     }
 
 
     @Transactional
     public void atualizar(@NonNull Medico medico){
         this.repository.update(medico.getNome(), medico.getTelefone(), medico.getEndereco(), medico.getId());
+    }
+
+    public void deletar(Medico medico) {
+
+        this.repository.logicalDeleteById(medico.getId());
     }
 }
