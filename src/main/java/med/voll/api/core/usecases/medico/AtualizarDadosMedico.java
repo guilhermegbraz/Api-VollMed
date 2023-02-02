@@ -11,7 +11,7 @@ public class AtualizarDadosMedico {
     @Autowired
     MedicoRepository repositorio;
 
-    public void executar(AtualizavelMedico dados) {
+    public Medico executar(AtualizavelMedico dados) {
         Medico medico = repositorio.recuperarUmMedico(dados.getId());
 
         if(dados.getEndereco() != null) medico.setEndereco(dados.getEndereco());
@@ -21,5 +21,7 @@ public class AtualizarDadosMedico {
         if(dados.getTelefone() != null) medico.setTelefone(dados.getTelefone());
 
         this.repositorio.atualizar(medico);
+
+        return medico;
     }
 }
