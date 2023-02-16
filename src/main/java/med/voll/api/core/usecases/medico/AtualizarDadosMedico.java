@@ -2,14 +2,16 @@ package med.voll.api.core.usecases.medico;
 
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
+
 public class AtualizarDadosMedico {
 
-    @Autowired
-    MedicoRepository repositorio;
+
+    private final MedicoRepository repositorio;
+
+    public AtualizarDadosMedico(MedicoRepository repositorio) {
+        this.repositorio = repositorio;
+    }
 
     public Medico executar(AtualizavelMedico dados) {
         Medico medico = repositorio.recuperarUmMedico(dados.getId());

@@ -5,19 +5,13 @@ import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.entities.medico.Medico;
 import med.voll.api.core.entities.medico.MedicoRepository;
 import med.voll.api.core.usecases.validação.medico.ValidadorCadastroMedico;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
+
 public class CadastroDeMedico {
 
-    @Autowired
-    MedicoRepository repositorio;
-
-    @Autowired
-    List<ValidadorCadastroMedico> validacoes;
+    private final MedicoRepository repositorio;
+    private final List<ValidadorCadastroMedico> validacoes;
 
     public CadastroDeMedico(MedicoRepository medicoRepository, List<ValidadorCadastroMedico> v) {
         this.repositorio = medicoRepository;

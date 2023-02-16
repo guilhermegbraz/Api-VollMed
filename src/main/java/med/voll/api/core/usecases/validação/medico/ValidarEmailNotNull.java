@@ -3,9 +3,8 @@ package med.voll.api.core.usecases.validação.medico;
 
 import med.voll.api.core.entities.BusinessException;
 import med.voll.api.core.entities.medico.Medico;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class ValidarEmailNotNull implements ValidadorCadastroMedico{
 
     @Override
