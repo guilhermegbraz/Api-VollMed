@@ -60,4 +60,5 @@ public class Medico {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
 }

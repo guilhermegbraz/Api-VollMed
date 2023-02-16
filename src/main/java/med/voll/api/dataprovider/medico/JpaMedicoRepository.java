@@ -17,9 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
 
-
-    Page<MedicoEntity> findAll(Pageable pageable);
-
     @Transactional
     @Modifying
     @Query("UPDATE Medico m SET m.nome = :nomeNovo, m.telefone = :telefoneNovo, m.endereco = :enderecoNovo WHERE m.id = :id")
@@ -32,4 +29,5 @@ public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
     void logicalDeleteById( @Param("id") Long id);
 
     Page<MedicoEntity> findAllByFlagAtivoTrue(Pageable pageable);
+
 }

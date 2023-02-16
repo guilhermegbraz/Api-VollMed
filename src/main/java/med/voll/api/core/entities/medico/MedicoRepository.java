@@ -2,7 +2,7 @@ package med.voll.api.core.entities.medico;
 
 public interface MedicoRepository {
 
-    void cadastrar(Medico novoMedico);
+    String cadastrar(Medico novoMedico);
 
     Medico recuperarUmMedico(Long id);
 
