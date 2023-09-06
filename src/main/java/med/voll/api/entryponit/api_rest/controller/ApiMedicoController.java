@@ -23,6 +23,7 @@ public class ApiMedicoController {
     public ApiMedicoController(MedicoController medicoController) {
         this.medicoController = medicoController;
     }
+
     @PostMapping
     @Transactional
     public ResponseEntity Cadastrar(@RequestBody DtoCadastroMedico jsonMedico, UriComponentsBuilder uriBuilder) {
@@ -44,14 +45,14 @@ public class ApiMedicoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
+    public ResponseEntity<DadosListagemMedico> atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
         var medicoAtualizado = this.medicoController.atualizar(dadosAtualizacao);
 
         return ResponseEntity.ok(medicoAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         this.medicoController.deletar(id);
 
         return ResponseEntity.noContent().build();

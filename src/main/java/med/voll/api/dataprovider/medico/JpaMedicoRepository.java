@@ -13,6 +13,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 
 @Repository
 public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
@@ -30,4 +32,5 @@ public interface JpaMedicoRepository extends JpaRepository<MedicoEntity, Long> {
 
     Page<MedicoEntity> findAllByFlagAtivoTrue(Pageable pageable);
 
+    Optional<MedicoEntity> findByIdAndFlagAtivoTrue(Long aLong);
 }
