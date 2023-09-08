@@ -1,5 +1,6 @@
 package med.voll.api.entryponit.api_rest.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import med.voll.api.Interface_Adapters.controllers.MedicoController;
 import med.voll.api.Interface_Adapters.model.dto.DtoAtualizaMedico;
 import med.voll.api.Interface_Adapters.model.dto.DtoCadastroMedico;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/medico")
+@SecurityRequirement(name = "bearer-key")
 public class ApiMedicoController {
 
     private final MedicoController medicoController;
