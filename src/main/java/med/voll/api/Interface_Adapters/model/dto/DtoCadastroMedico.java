@@ -1,4 +1,4 @@
-package med.voll.api.controller.model.dto;
+package med.voll.api.Interface_Adapters.model.dto;
 
 
 import med.voll.api.core.entities.BusinessException;

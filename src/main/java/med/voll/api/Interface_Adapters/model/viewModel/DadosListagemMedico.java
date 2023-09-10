@@ -1,4 +1,4 @@
-package med.voll.api.controller.model.viewModel;
+package med.voll.api.Interface_Adapters.model.viewModel;
 
 
 import med.voll.api.core.entities.medico.Especialidade;

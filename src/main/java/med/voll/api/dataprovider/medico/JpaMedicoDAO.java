@@ -31,12 +31,16 @@ public class JpaMedicoDAO implements MedicoRepository {
 
    @Transactional
     @Override
-    public void cadastrar(Medico novoMedico) {
+    public String cadastrar(Medico novoMedico) {
        MedicoEntity medico = this.medicoToMedicoEntityConverter.executar(novoMedico);
-       try{repository.save(medico);
+       try{
+           repository.save(medico);
+
+           return String.valueOf(medico.getId());
        } catch (Exception e) {
             throw new BusinessException(BusinessException.getFullMessage(e));
        }
+
    }
 
     @Override

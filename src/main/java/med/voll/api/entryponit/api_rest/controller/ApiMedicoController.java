@@ -1,5 +1,6 @@
 package med.voll.api.entryponit.api_rest.controller;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import med.voll.api.Interface_Adapters.controllers.MedicoController;
 import med.voll.api.Interface_Adapters.model.dto.DtoAtualizaMedico;
 import med.voll.api.Interface_Adapters.model.dto.DtoCadastroMedico;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/medico")
+@SecurityRequirement(name = "bearer-key")
 public class ApiMedicoController {
 
     private final MedicoController medicoController;
@@ -23,6 +25,7 @@ public class ApiMedicoController {
     public ApiMedicoController(MedicoController medicoController) {
         this.medicoController = medicoController;
     }
+
     @PostMapping
     @Transactional
     public ResponseEntity Cadastrar(@RequestBody DtoCadastroMedico jsonMedico, UriComponentsBuilder uriBuilder) {
@@ -44,14 +47,14 @@ public class ApiMedicoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
+    public ResponseEntity<DadosListagemMedico> atualizar(@RequestBody DtoAtualizaMedico dadosAtualizacao) {
         var medicoAtualizado = this.medicoController.atualizar(dadosAtualizacao);
 
         return ResponseEntity.ok(medicoAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         this.medicoController.deletar(id);
 
         return ResponseEntity.noContent().build();
