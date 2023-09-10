@@ -29,9 +29,9 @@ Link para o quadro trello com as Features desenvolvidas: https://trello.com/b/MQ
 
 - [x] Listagem de médicos
 
-- [ ] Atualização de Médicos
+- [x] Atualização de Médicos
 
-- [ ] Atualização de Médicos
+- [x] Atualização de Médicos
 
 ### back-end
 O back foi feito utilizando as tecnologias:
